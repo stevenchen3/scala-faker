@@ -36,7 +36,7 @@ object Person extends Faker with LazyLogging {
     Try(ConfigFactory.load().getConfig("faker").getString("lang")) match {
       case Success(v) ⇒ v
       case Failure(_) ⇒
-        logger.error("Failed to load locale settings. Use default locale 'en'")
+        logger.warn("Failed to load locale settings. Use default locale 'en'")
         "en"
     }
 
