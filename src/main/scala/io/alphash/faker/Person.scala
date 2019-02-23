@@ -6,9 +6,9 @@ import com.typesafe.scalalogging.LazyLogging
 import scala.io._
 import scala.util.{Failure, Random, Success, Try}
 
-case class Titles(male: Seq[String], female: Seq[String])
-case class FirstNames(male: Seq[String], female: Seq[String])
-case class PersonModel(titles: Titles, firstNames: FirstNames, lastNames: Seq[String])
+sealed case class Titles(male: Seq[String], female: Seq[String])
+sealed case class FirstNames(male: Seq[String], female: Seq[String])
+sealed case class PersonModel(titles: Titles, firstNames: FirstNames, lastNames: Seq[String])
 
 class Person(model: PersonModel) {
   private[this] val rand = new Random()
