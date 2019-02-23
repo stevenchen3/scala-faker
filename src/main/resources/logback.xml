@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    © 2017 Stratio Big Data Inc., Sucursal en España.
+
+    This software is licensed under the Apache 2.0.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the terms of the License for more details.
+
+    SPDX-License-Identifier:  Apache-2.0.
+
+-->
+<configuration scan="true">
+    <!--
+    WE MIGHT ADD A MAVEN PROFILE FOR DEVELOPMENT AND PRODUCTION LOGGER. FOR PRODUCTION (DC/OS CLUSTER)
+    WE NEED TO COMMENT THE CONSOLE APPENDER BECAUSE IF NOT THE APP GETS KILLED.
+    IN DEVELOPMENT MODE WE RECOMMEND TO UNCOMMENT THIS LOGGER AND COMMENT THE FILE ONE-->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d %-4relative [%thread] %-5level %logger{35} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>./faker.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%-5relative %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="file" />
+        <appender-ref ref="consoleAppender" />
+    </root>
+</configuration>

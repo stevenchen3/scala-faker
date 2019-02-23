@@ -1,0 +1,11 @@
+{
+  "titles": {
+    "male": ["Mr."],
+    "female": ["Mrs.", "Ms.", "Miss"]
+  },
+  "firstNames": {
+    "male": ["Male-A", "Male-B", "Male-C"],
+    "female": ["Female-A", "Female-B", "Female-C"]
+  },
+  "lastNames": ["Chan", "Lee"]
+}
