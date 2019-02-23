@@ -16,4 +16,9 @@ lazy val commonSettings = Seq(
 
 lazy val root = Project(id = "faker", base = file("."))
   .settings(commonSettings: _*)
+  .settings(fork in run  := true)
+  .settings(fork in Test := true)
+  .settings(libraryDependencies ++= circeDeps)
   .settings(libraryDependencies ++= scalatestDeps)
+  .settings(libraryDependencies ++= typesafeConfigDeps)
+  .settings(libraryDependencies ++= typesafeScalaLoggingDeps)
