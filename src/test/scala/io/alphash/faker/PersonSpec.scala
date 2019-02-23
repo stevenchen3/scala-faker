@@ -29,4 +29,10 @@ class PersonSpec extends FlatSpec with Matchers {
     List("Male-A", "Male-B", "Male-C", "Female-A", "Female-B", "Female-C") should contain (name(1))
     List("Chan", "Lee") should contain (name(2))
   }
+
+  it should "throw Exception if either resource 'name' or 'file' is invalid" in {
+    a [Exception] should be thrownBy {
+      Person.getResource("foo", "bar")
+    }
+  }
 }
