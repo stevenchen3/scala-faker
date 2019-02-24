@@ -1,6 +1,6 @@
 package io.alphash.faker
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 class PhoneSpec extends FlatSpec with Matchers {
   "A phone number" should "have the type of '201-123-4567'" in {

@@ -1,6 +1,6 @@
 package io.alphash.faker
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 class GeolocationSpec extends FlatSpec with Matchers {
   "A geo" should "have latitute and longitude" in {

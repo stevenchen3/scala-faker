@@ -1,6 +1,6 @@
 package io.alphash.faker
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 class FakerSpec extends FlatSpec with Matchers {
   case class FakerFoo() extends Faker

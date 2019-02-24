@@ -1,6 +1,6 @@
 package io.alphash.faker
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 import scala.util.Try
 

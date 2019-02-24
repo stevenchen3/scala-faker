@@ -1,6 +1,6 @@
 package io.alphash.faker
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 class PersonSpec extends FlatSpec with Matchers {
   "A male" should "have a title as 'Mr.'" in {

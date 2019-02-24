@@ -2,7 +2,7 @@ package io.alphash.faker
 
 import java.net.InetAddress
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 import scala.util.Try
 
