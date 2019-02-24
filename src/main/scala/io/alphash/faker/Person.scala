@@ -11,21 +11,19 @@ sealed case class FirstNames(male: Seq[String], female: Seq[String])
 sealed case class PersonModel(titles: Titles, firstNames: FirstNames, lastNames: Seq[String])
 
 class Person(model: PersonModel) {
-  private[this] val rand = new Random()
+  import Person._
 
-  private[this] def getRandomElement(xs: Seq[String]): String = xs(rand.nextInt(xs.size))
+  def titleMale: String = getRandomElement[String](model.titles.male)
 
-  def titleMale: String = getRandomElement(model.titles.male)
+  def titleFemale: String = getRandomElement[String](model.titles.female)
 
-  def titleFemale: String = getRandomElement(model.titles.female)
+  def firstNameMale: String = getRandomElement[String](model.firstNames.male)
 
-  def firstNameMale: String = getRandomElement(model.firstNames.male)
+  def firstNameFemale: String = getRandomElement[String](model.firstNames.female)
 
-  def firstNameFemale: String = getRandomElement(model.firstNames.female)
+  def lastName: String = getRandomElement[String](model.lastNames)
 
-  def lastName: String = getRandomElement(model.lastNames)
-
-  def name: String = rand.nextInt(100) match {
+  def name: String = Random.nextInt(100) match {
     case x if x > 50 ⇒ s"${titleFemale} ${firstNameFemale} ${lastName}"
     case _ ⇒ s"${titleMale} ${firstNameMale} ${lastName}"
   }
