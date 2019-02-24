@@ -27,10 +27,10 @@ class Internet(tld: Seq[String], urlFormats: Seq[(String*) ⇒ String]) {
   }
 
   def domainName: String =
-    s"${Random.alphanumeric.take(7).mkString}.${getRandomElement[String](tld)}"
+    s"${Random.alphanumeric.take(7).mkString}.${getRandomElement[String](tld).get}"
 
   def url: String = {
-    val f = getRandomElement[(String*) ⇒ String](urlFormats)
+    val f = getRandomElement[(String*) ⇒ String](urlFormats).get
     if (f(Seq("?")).count(_ == '?') == 1) f(Seq(domainName))
     else f(Seq(domainName, username))
   }

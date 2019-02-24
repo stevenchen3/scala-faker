@@ -13,15 +13,15 @@ sealed case class PersonModel(titles: Titles, firstNames: FirstNames, lastNames:
 class Person(model: PersonModel) {
   import Person._
 
-  def titleMale: String = getRandomElement[String](model.titles.male)
+  def titleMale: String = getRandomElement[String](model.titles.male).get
 
-  def titleFemale: String = getRandomElement[String](model.titles.female)
+  def titleFemale: String = getRandomElement[String](model.titles.female).get
 
-  def firstNameMale: String = getRandomElement[String](model.firstNames.male)
+  def firstNameMale: String = getRandomElement[String](model.firstNames.male).get
 
-  def firstNameFemale: String = getRandomElement[String](model.firstNames.female)
+  def firstNameFemale: String = getRandomElement[String](model.firstNames.female).get
 
-  def lastName: String = getRandomElement[String](model.lastNames)
+  def lastName: String = getRandomElement[String](model.lastNames).get
 
   def name: String = Random.nextInt(100) match {
     case x if x > 50 ⇒ s"${titleFemale} ${firstNameFemale} ${lastName}"

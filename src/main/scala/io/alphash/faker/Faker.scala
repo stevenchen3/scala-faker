@@ -11,5 +11,6 @@ trait Faker {
     throw new Exception(s"Error loading invalid resource /locales/$name/$file")
   }
 
-  def getRandomElement[T](xs: Seq[T]): T = xs(Random.nextInt(xs.size))
+  def getRandomElement[T](xs: Seq[T]): Option[T] =
+    if (xs.isEmpty) None else Some(xs(Random.nextInt(xs.size)))
 }
