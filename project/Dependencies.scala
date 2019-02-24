@@ -9,6 +9,14 @@ object Dependencies {
     "io.circe" %% "circe-parser"
   ).map(_ % circeVersion)
 
+  val jodaTimeDeps = Seq(
+    "joda-time" % "joda-time" % "2.10.1"
+  )
+
+  val jodaConvertDeps = Seq(
+    "org.joda" % "joda-convert" % "2.2.0"
+  )
+
   // Scalatest library dependencies
   val scalatestDeps = Seq(
     "org.scalatest" %% "scalatest" % "3.0.1" % "test",
