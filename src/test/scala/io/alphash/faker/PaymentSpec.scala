@@ -25,6 +25,15 @@ class PaymentSpec extends FlatSpec with Matchers {
     }
   }
 
+  it should "be in a valid credit card number format" in {
+    val number = Payment().creditCardNumber()
+    number.length match {
+      case x if x == 14 ⇒ List("36", "38", "39") should contain(number.take(2))
+      case x if x == 15 ⇒ List("34", "37") should contain(number.take(2))
+      case _ ⇒ number.length should be(16)
+    }
+  }
+
   it should "have predefined length" in {
     cards.foreach { c ⇒
       Payment().creditCardNumber(Some(c._1)).size should be(c._2)

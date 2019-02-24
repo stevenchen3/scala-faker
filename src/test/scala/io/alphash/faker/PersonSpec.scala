@@ -24,9 +24,11 @@ class PersonSpec extends FlatSpec with Matchers {
   }
 
   it should "have a name contains title, first name and last name" in {
-    val name = Person().name.split(" ")
-    List("Mr.", "Mrs.", "Ms.", "Miss") should contain (name(0))
-    List("Male-A", "Male-B", "Male-C", "Female-A", "Female-B", "Female-C") should contain (name(1))
-    List("Chan", "Lee") should contain (name(2))
+    (1 to 20).foreach { _ ⇒
+      val name = Person().name.split(" ")
+      List("Mr.", "Mrs.", "Ms.", "Miss") should contain (name(0))
+      List("Male-A", "Male-B", "Male-C", "Female-A", "Female-B", "Female-C") should contain (name(1))
+      List("Chan", "Lee") should contain (name(2))
+    }
   }
 }
