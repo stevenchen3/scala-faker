@@ -25,7 +25,7 @@ class PaymentSpec extends FlatSpec with Matchers {
     }
   }
 
-  "A credit card number" should "have predefined length" in {
+  it should "have predefined length" in {
     cards.foreach { c ⇒
       Payment().creditCardNumber(Some(c._1)).size should be(c._2)
     }
@@ -34,6 +34,12 @@ class PaymentSpec extends FlatSpec with Matchers {
   it should "have predefined prefix" in {
     cards.foreach { c ⇒
       c._4 should contain (Payment().creditCardNumber(Some(c._1)).take(c._3))
+    }
+  }
+
+  it should "throw Exception if invalid credit card type is given" in {
+    a [Exception] should be thrownBy {
+      Payment().creditCardNumber(Some("foobar"))
     }
   }
 }
