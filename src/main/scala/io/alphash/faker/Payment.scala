@@ -2,7 +2,7 @@ package io.alphash.faker
 
 import scala.util.Random
 
-case class CreditCard(cctype: String, length: Int, prefixes: Seq[Int])
+sealed case class CreditCard(cctype: String, length: Int, prefixes: Seq[Int])
 
 class Payment {
   import Payment._
