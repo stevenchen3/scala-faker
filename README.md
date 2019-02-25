@@ -6,7 +6,17 @@ Scala Fake Data Generator. This repository includes Scala implementation for thi
 [![codecov](https://codecov.io/gh/stevenchen3/scala-faker/branch/master/graph/badge.svg)](https://codecov.io/gh/stevenchen3/scala-faker)
 [![License](https://img.shields.io/github/license/stevenchen3/scala-faker.svg)](https://github.com/stevenchen3/faker/blob/master/LICENSE)
 
-# Supported Fakers
+
+# Building
+
+Check Scala style, run tests and generate coverage report
+
+```bash
+sbt ++2.12.8 scalastyle test coverage coverageReport
+```
+
+
+# Available Fakers
 
 It currently supports the following fakers:
 
