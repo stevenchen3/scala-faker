@@ -20,7 +20,7 @@ class InternetSpec extends FlatSpec with Matchers {
   }
 
   "A URL" should "have protocol, domain and tld" in {
-    (1 to 20).foreach { _ ⇒
+    (1 to 100).foreach { _ ⇒
       val url = Internet().url
       """(http|https)://(.*)\.([a-z]+)""".r.findFirstIn(url) should not be(None)
     }
