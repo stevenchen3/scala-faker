@@ -24,6 +24,11 @@ class Person(model: PersonModel) {
   def lastName: String = getRandomElement[String](model.lastNames).get
 
   def name: String = Random.nextInt(100) match {
+    case x if x > 50 ⇒ s"${firstNameFemale} ${lastName}"
+    case _ ⇒ s"${firstNameMale} ${lastName}"
+  }
+
+  def nameWithTitle: String = Random.nextInt(100) match {
     case x if x > 50 ⇒ s"${titleFemale} ${firstNameFemale} ${lastName}"
     case _ ⇒ s"${titleMale} ${firstNameMale} ${lastName}"
   }
