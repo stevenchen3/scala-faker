@@ -1,3 +1,4 @@
+language: scala
 cache:
   directories:
   - $HOME/.ivy2/cache
@@ -11,8 +12,6 @@ cache:
   # job, as these versions might be replaced after a Travis CI build
   # environment upgrade (e.g. scala 2.11.2 could be replaced by scala 2.11.4).
   - $HOME/.sbt/boot/scala-$TRAVIS_SCALA_VERSION
-
-language: scala
 
 scala:
   - 2.12.8
