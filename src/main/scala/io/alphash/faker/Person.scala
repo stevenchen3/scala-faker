@@ -13,6 +13,9 @@ sealed case class PersonModel(titles: Titles, firstNames: FirstNames, lastNames:
 class Person(model: PersonModel) {
   import Person._
 
+  private[this] val RAND_INT_MAX: Int = 100
+  private[this] val GENDER_SPLITTER: Int = 50
+
   def titleMale: String = getRandomElement[String](model.titles.male).get
 
   def titleFemale: String = getRandomElement[String](model.titles.female).get
@@ -23,13 +26,13 @@ class Person(model: PersonModel) {
 
   def lastName: String = getRandomElement[String](model.lastNames).get
 
-  def name: String = Random.nextInt(100) match {
-    case x if x > 50 ⇒ s"${firstNameFemale} ${lastName}"
+  def name: String = Random.nextInt(RAND_INT_MAX) match {
+    case x if x > GENDER_SPLITTER ⇒ s"${firstNameFemale} ${lastName}"
     case _ ⇒ s"${firstNameMale} ${lastName}"
   }
 
-  def nameWithTitle: String = Random.nextInt(100) match {
-    case x if x > 50 ⇒ s"${titleFemale} ${firstNameFemale} ${lastName}"
+  def nameWithTitle: String = Random.nextInt(RAND_INT_MAX) match {
+    case x if x > GENDER_SPLITTER ⇒ s"${titleFemale} ${firstNameFemale} ${lastName}"
     case _ ⇒ s"${titleMale} ${firstNameMale} ${lastName}"
   }
 }

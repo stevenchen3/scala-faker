@@ -9,17 +9,19 @@ import scala.util.Random
 class Internet(tld: Seq[String], urlFormats: Seq[(String*) ⇒ String]) {
   import Internet._
 
-  def email: String = s"${Random.alphanumeric.take(7).mkString}@${domainName}"
+  private[this] val USR_LEN: Int = 7
+
+  def email: String = s"${Random.alphanumeric.take(USR_LEN).mkString}@${domainName}"
 
   def macAddress: String = {
-    val macAddr: Array[Byte] = Array.ofDim[Byte](6)
-    Random.nextBytes(macAddr)
+    val macAddr: Array[Byte] = Array.ofDim[Byte](6) // scalastyle:off
+    Random.nextBytes(macAddr) // scalastyle:on
 
     //zeroing last 2 bytes to make it unicast and locally adminstrated
     macAddr(0) = (macAddr(0) & 254.toByte).toByte
 
-    val sb = new StringBuilder(18)
-    macAddr.foreach { b ⇒
+    val sb = new StringBuilder(18) // scalastyle:off
+    macAddr.foreach { b ⇒ // scalastyle:on
       if (sb.length > 0) sb.append(":")
       sb.append(f"${b}%02x")
     }
@@ -27,7 +29,7 @@ class Internet(tld: Seq[String], urlFormats: Seq[(String*) ⇒ String]) {
   }
 
   def domainName: String =
-    s"${Random.alphanumeric.take(7).mkString}.${getRandomElement[String](tld).get}"
+    s"${Random.alphanumeric.take(USR_LEN).mkString}.${getRandomElement[String](tld).get}"
 
   def url: String = {
     val f = getRandomElement[(String*) ⇒ String](urlFormats).get
@@ -35,7 +37,7 @@ class Internet(tld: Seq[String], urlFormats: Seq[(String*) ⇒ String]) {
     else f(Seq(domainName, username))
   }
 
-  def username: String = Random.alphanumeric.take(7).mkString
+  def username: String = Random.alphanumeric.take(USR_LEN).mkString
 
   def password: String = {
     val rand = new Random()
@@ -45,6 +47,7 @@ class Internet(tld: Seq[String], urlFormats: Seq[(String*) ⇒ String]) {
   // This could generate an IP like "255.255.255.255"
   def ipv4: String = {
     val rand = new Random()
+    // scalastyle:off
     def loop(n: Int, acc: Seq[Int]): Seq[Int] = n match {
       case x if x > 0 ⇒
         if (acc.isEmpty) loop(n - 1, acc :+ (1 + rand.nextInt(255)))
@@ -52,9 +55,11 @@ class Internet(tld: Seq[String], urlFormats: Seq[(String*) ⇒ String]) {
       case _ ⇒ acc
     }
     loop(4, Seq()).mkString(".")
+    // scalastyle:on
   }
 
   def ipv6: String = {
+    // scalastyle:off
     def bigIntToByteArray(n: BigInt, size: Int = 16): Array[Byte] = {
       val a = n.toByteArray
       val leadingLength = math.max(size - a.length, 0)
@@ -67,6 +72,7 @@ class Internet(tld: Seq[String], urlFormats: Seq[(String*) ⇒ String]) {
     }
 
     bigIntToIPv6(probablePrime(100, Random))
+    // scalastyle:on
   }
 }
 

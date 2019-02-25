@@ -6,7 +6,9 @@ class Price(currencyOpt: Option[String] = None, amountOpt: Option[Double] = None
   import Price._
 
   private[this] def precision(value: Double, pre: Int): Double = {
+    // scalastyle:off
     val div = Math.pow(10, pre)
+    // scalastyle:on
     ((value * div).toLong).toDouble / div
   }
 
@@ -20,7 +22,9 @@ class Price(currencyOpt: Option[String] = None, amountOpt: Option[Double] = None
     case Some(a) ⇒ if (a > 0) a else throw new Exception("Amount cannot be negative")
     case None    ⇒
       val rand = new Random()
+      // scalastyle:off
       precision(Math.pow(10, rand.nextInt(8)) * rand.nextDouble, rand.nextInt(2) + 1)
+      // scalastyle:on
   }
 
   def amountWithCurrency: String = s"${currency} ${amount}"
@@ -47,7 +51,7 @@ object Price extends Faker {
     "TWD", "TZS", "UAH", "UGX", "USD", "USN", "UYI", "UYU", "UYW",
     "UZS", "VES", "VND", "VUV", "WST", "XAF", "XAG", "XAU", "XBA",
     "XBB", "XBC", "XBD", "XCD", "XDR", "XOF", "XPD", "XPF", "XPT",
-    "XSU", "XTS", "XUA", "XXX", "YER", "ZAR", "ZMW", "ZWL",
+    "XSU", "XTS", "XUA", "XXX", "YER", "ZAR", "ZMW", "ZWL"
   )
 
   def apply(currencyOpt: Option[String] = None, amountOpt: Option[Double] = None): Price =

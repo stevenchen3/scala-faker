@@ -5,6 +5,9 @@ import scala.annotation.tailrec
 class Lorem {
   import Lorem._
 
+  private[this] val WORD_LENGTH: Int = 6
+  private[this] val SENTENCE_LENGTH: Int = 10
+
   @tailrec
   private[this] def loop(n: Int, acc: String, f: () ⇒ String, separator: String): String = {
     if (n > 0) {
@@ -15,10 +18,10 @@ class Lorem {
 
   def word: String = getRandomElement[String](wordList).get
 
-  def sentence: String = loop(6, "", () ⇒ word, " ")
+  def sentence: String = loop(WORD_LENGTH, "", () ⇒ word, " ")
 
   def paragraph: String = {
-    val p = loop(10, "", () ⇒ sentence, " ")
+    val p = loop(SENTENCE_LENGTH, "", () ⇒ sentence, " ")
     p.take(p.length - 1) // remove tailing period
   }
 }

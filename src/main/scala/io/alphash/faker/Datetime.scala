@@ -23,7 +23,9 @@ class Datetime {
   }
 
   def time: String = new LocalTime(
+    // scalastyle:off
     Random.nextInt(24), Random.nextInt(60), Random.nextInt(60), Random.nextInt(1000)
+    // scalastyle:on
   ).toString
 }
 
