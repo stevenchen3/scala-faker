@@ -2,7 +2,7 @@ package io.alphash.faker
 
 import com.typesafe.config.ConfigFactory
 
-import scala.io._
+import scala.io.Source
 import scala.util.{Failure, Random, Success, Try}
 
 sealed case class Titles(male: Seq[String], female: Seq[String])
@@ -37,16 +37,17 @@ class Person(model: PersonModel) {
 }
 
 object Person extends Faker {
-  private[this] lazy val locale: String =
-    Try(ConfigFactory.load().getConfig("faker").getString("lang")).getOrElse("en")
+  private lazy val locale = config.map(c ⇒ Try(c.getString("lang"))).get.getOrElse("en")
 
   lazy val model: PersonModel = {
-    import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
+    import io.circe.Decoder
+    import io.circe.generic.semiauto.deriveDecoder
+    implicit val titlesDecoder: Decoder[Titles] = deriveDecoder
+    implicit val firstNamesDecoder: Decoder[FirstNames] = deriveDecoder
+    implicit val personModelDecoder: Decoder[PersonModel] = deriveDecoder
+
     val s = Source.fromInputStream(getResource("person", s"${locale}.json")).mkString
-    decode[PersonModel](s) match {
-      case Right(value) ⇒ value
-      case Left(error)  ⇒ throw new Exception(error.getMessage)
-    }
+    objectFrom[PersonModel](s)
   }
 
   def apply(): Person = new Person(model)
