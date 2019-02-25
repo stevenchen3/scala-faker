@@ -2,7 +2,7 @@ import sbt._
 
 object Dependencies {
   // Circe library dependencies
-  val circeVersion = "0.11.0"
+  lazy val circeVersion = "0.11.0"
   val circeDeps = Seq(
     "io.circe" %% "circe-core",
     "io.circe" %% "circe-generic",
@@ -25,9 +25,5 @@ object Dependencies {
 
   val typesafeConfigDeps = Seq(
     "com.typesafe" % "config" % "1.3.3"
-  )
-
-  val typesafeScalaLoggingDeps = Seq(
-    "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
   )
 }

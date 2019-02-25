@@ -1,7 +1,6 @@
 package io.alphash.faker
 
-import com.typesafe.config._
-import com.typesafe.scalalogging.LazyLogging
+import com.typesafe.config.ConfigFactory
 
 import scala.io._
 import scala.util.{Failure, Random, Success, Try}
@@ -37,14 +36,9 @@ class Person(model: PersonModel) {
   }
 }
 
-object Person extends Faker with LazyLogging {
+object Person extends Faker {
   private[this] lazy val locale: String =
-    Try(ConfigFactory.load().getConfig("faker").getString("lang")) match {
-      case Success(v) ⇒ v
-      case Failure(_) ⇒
-        logger.warn("Failed to load locale settings. Use default locale 'en'")
-        "en"
-    }
+    Try(ConfigFactory.load().getConfig("faker").getString("lang")).getOrElse("en")
 
   lazy val model: PersonModel = {
     import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
