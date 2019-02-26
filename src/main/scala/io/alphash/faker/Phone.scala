@@ -30,7 +30,9 @@ class Phone (models: Map[String, PhoneFormat]) {
     val rac = areaCodeOption(Some(cc)).getOrElse("")
     val ac  = if(enableE164) removeHeadingZero(rac) else rac
     val prefix = getRandomElement[String](format.prefixes).get
-    val tail   = (1 to format.length - prefix.length).map(_ ⇒ Random.nextInt(10)).mkString
+    // scalastyle:off
+    val tail = (1 to format.length - prefix.length).map(_ ⇒ Random.nextInt(10)).mkString
+    // scalastyle:on
     s"${cc}${ac}${prefix}${tail}"
   }
 
@@ -68,7 +70,7 @@ class Phone (models: Map[String, PhoneFormat]) {
   }
 
   // It generates phone numbers of type: "+71234567891"
-  def e164PhoneNumber(countryCode: Option[String]): String = countryCode match {
+  def e164PhoneNumber(countryCode: Option[String] = None): String = countryCode match {
     case Some(cc) ⇒ models.get(cc).map { f ⇒
       s"+${getPhoneNumber(f, true)}"
     }.getOrElse(throw new Exception(s"Unsupported country code: $cc"))
