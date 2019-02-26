@@ -42,6 +42,7 @@ object Person extends Faker {
   lazy val model: PersonModel = {
     import io.circe.Decoder
     import io.circe.generic.semiauto.deriveDecoder
+
     implicit val titlesDecoder: Decoder[Titles] = deriveDecoder
     implicit val firstNamesDecoder: Decoder[FirstNames] = deriveDecoder
     implicit val personModelDecoder: Decoder[PersonModel] = deriveDecoder
