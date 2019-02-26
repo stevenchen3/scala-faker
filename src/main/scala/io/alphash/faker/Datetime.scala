@@ -17,7 +17,7 @@ class Datetime {
       case Some(f) ⇒
         Try {
           DateTimeFormat.forPattern(f).print(date)
-        }.getOrElse(throw new Exception(s"Invalid DateTimeFormat"))
+        }.getOrElse(throw new Exception(s"Invalid DateTimeFormat: $f"))
       case None ⇒ date.toString
     }
   }

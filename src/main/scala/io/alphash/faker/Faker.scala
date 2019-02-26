@@ -3,7 +3,6 @@ package io.alphash.faker
 import com.typesafe.config.{Config, ConfigFactory}
 
 import io.circe._
-import io.circe.generic.auto._
 import io.circe.parser._
 import io.circe.syntax._
 
@@ -12,8 +11,8 @@ import java.io.InputStream
 import scala.util.{Random, Try}
 
 trait Faker {
-  def config: Option[Config] =
-    Try(Some(ConfigFactory.load().getConfig("faker"))).getOrElse(None)
+  def config(name: String = "faker"): Option[Config] =
+    Try(Some(ConfigFactory.load().getConfig(name))).getOrElse(None)
 
   def getResource(name: String, file: String): InputStream = Option {
     getClass.getResourceAsStream(s"/locales/$name/$file")

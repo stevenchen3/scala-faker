@@ -1,17 +1,22 @@
 package io.alphash.faker
 
+import io.circe.Decoder
+import io.circe.generic.semiauto.deriveDecoder
+
 import org.scalatest.{FlatSpec, Matchers}
 
 class FakerSpec extends FlatSpec with Matchers {
   case class FakerFoo() extends Faker
   case class Foobar(x: Int)
 
-  import io.circe.Decoder
-  import io.circe.generic.semiauto.deriveDecoder
   implicit val fakerFooDecoder: Decoder[Foobar] = deriveDecoder
 
   "Method 'getConfig'" should "return Some config" in {
-    FakerFoo().config should not be(None)
+    FakerFoo().config() should not be(None)
+  }
+
+  it should "return None" in {
+    FakerFoo().config("foobar") should be(None)
   }
 
   "Method 'getResource(String, String): InputStream'" should "return not null InputStream" in {

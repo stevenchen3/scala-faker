@@ -37,7 +37,7 @@ class Person(model: PersonModel) {
 }
 
 object Person extends Faker {
-  private lazy val locale = config.map(c ⇒ Try(c.getString("lang"))).get.getOrElse("en")
+  private lazy val locale = config().map(c ⇒ Try(c.getString("lang"))).get.getOrElse("en")
 
   lazy val model: PersonModel = {
     import io.circe.Decoder
