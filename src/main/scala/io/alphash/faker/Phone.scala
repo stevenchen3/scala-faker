@@ -46,7 +46,9 @@ class Phone (models: Map[String, PhoneFormat]) {
     case Some(cc) ⇒ models.get(cc).map { phoneFormat ⇒
       format(phoneFormat.format, getPhoneNumber(phoneFormat).map(_.toString))
     }.getOrElse(throw new Exception(s"Unsupported country code: $cc"))
-    case None ⇒ format(randomPhoneFormat.format, getPhoneNumber(randomPhoneFormat).map(_.toString))
+    case None ⇒
+      val phoneFormat = randomPhoneFormat
+      format(phoneFormat.format, getPhoneNumber(phoneFormat).map(_.toString))
   }
 
   def countryCode: String = getRandomElement[String](models.map(_._1).toSeq).get

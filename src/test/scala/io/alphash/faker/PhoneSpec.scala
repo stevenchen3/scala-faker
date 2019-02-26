@@ -47,6 +47,13 @@ class PhoneSpec extends FlatSpec with Matchers {
     }
   }
 
+  it should "be either Singapore or US phone number" in {
+    val prefixes = List("+65 ", "+1 (")
+    (1 to 100).foreach { _ ⇒
+      prefixes should contain(Phone().phoneNumber().take(4))
+    }
+  }
+
   it should "throw Exception if unsupported country code given" in {
     a [Exception] should be thrownBy {
       Phone().phoneNumber(Some("00"))
