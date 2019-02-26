@@ -20,11 +20,48 @@ sbt ++2.12.8 scalastyle test coverage coverageReport
 
 It currently supports the following fakers:
 
-- Datetime
-- Geolocation
-- Internet
-- Lorem
-- Payment
-- Person
-- Phone
-- Price
+**Datetime :**
+* Datetime
+* Time
+
+**Geolocation :**
+* Latitude and Longitude
+
+**Internet :**
+* Email
+* Mac address
+* Domain name
+* URL
+* Username
+* IP Address (IPv4, IPv6 )
+* Password
+
+**Lorem :**
+* Word
+* Sentence
+* Paragraph
+
+**Payment :**
+* Credit Card Type (VISA, MASTERCARD, AMERICAN EXPRESS, DISCOVER, JCB, DINERS CLUB)
+* Credit Card Number
+
+**Person :**
+* Title male
+* Title female
+* First name
+* First name male
+* First name female
+* Last name
+* Name with title
+* Name (first last)
+
+**Phone :**
+* Phone number
+* Country code
+* Area code
+* Toll free phone number
+* E164PhoneNumber
+
+**Price :**
+* Currency
+* Amount
