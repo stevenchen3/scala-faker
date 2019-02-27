@@ -16,6 +16,15 @@ sbt ++2.12.8 scalastyle test coverage coverageReport
 ```
 
 
+# Publish Locally
+
+Make sure `export GPG_TTY=$(tty)` is appended to `~/.bashrc` or has been loaded to current shell.
+
+```bash
+sbt ++2.12.8 publishLocalSigned
+```
+
+
 # Available Fakers
 
 It currently supports the following fakers:
