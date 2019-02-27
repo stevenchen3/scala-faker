@@ -28,4 +28,4 @@ publishTo in ThisBuild := {
 
 publishMavenStyle in ThisBuild := true
 publishArtifact in Test in ThisBuild := false
-useGpg in ThisBuild := true
+PgpKeys.useGpg in ThisBuild := true
