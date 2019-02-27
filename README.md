@@ -7,6 +7,16 @@ Scala Fake Data Generator. This repository includes Scala implementation for thi
 [![License](https://img.shields.io/github/license/stevenchen3/scala-faker.svg)](https://github.com/stevenchen3/faker/blob/master/LICENSE)
 
 
+# Get Started
+
+To use the latest development version, append the following to your `build.sbt`
+
+```scala
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "0.1.0-SNAPSHOT"
+```
+
+
 # Building
 
 Check Scala style, run tests and generate coverage report
