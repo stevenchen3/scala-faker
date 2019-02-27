@@ -68,7 +68,7 @@ It currently supports the following fakers:
 
 **Phone :**
 * Phone number
-* Country code
+* Country code (US and Singapore)
 * Area code
 * Toll free phone number
 * E164PhoneNumber
