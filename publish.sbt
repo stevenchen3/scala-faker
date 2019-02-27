@@ -1,7 +1,3 @@
-organization in ThisBuild := "com.github.stevenchen3"
-organizationName in ThisBuild := "Steven Chen Open Source Work"
-organizationHomepage in ThisBuild := Some(url("https://github.com/stevenchen3"))
-
 scmInfo in ThisBuild := Some(
   ScmInfo(
     url("https://github.com/stevenchen3/scala-faker"),
@@ -19,8 +15,8 @@ developers in ThisBuild := List(
 )
 
 description in ThisBuild := "Scala fake data generator library"
-licenses in ThisBuild := List("BSD 3-Clause" -> new URL("https://opensource.org/licenses/BSD-3-Clause"))
-homepage in ThisBuild := Some(url("https://github.com/stevenchen3/scala-faker"))
+licenses    in ThisBuild := List("BSD 3-Clause" -> new URL("https://opensource.org/licenses/BSD-3-Clause"))
+homepage    in ThisBuild := Some(url("https://github.com/stevenchen3/scala-faker"))
 
 // Remove all additional repository other than Maven Central from POM
 pomIncludeRepository in ThisBuild := { _ ⇒ false }
