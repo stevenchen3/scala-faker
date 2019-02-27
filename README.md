@@ -21,6 +21,8 @@ sbt ++2.12.8 scalastyle test coverage coverageReport
 Make sure `export GPG_TTY=$(tty)` is appended to `~/.bashrc` or has been loaded to current shell.
 
 ```bash
+source ~/.bashrc
+sbt ++2.11.8 publishLocalSigned
 sbt ++2.12.8 publishLocalSigned
 ```
 
