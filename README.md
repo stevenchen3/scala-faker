@@ -21,7 +21,7 @@ libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "0.1.0-SNAPSH
 ```
 
 
-# Building
+## Building Current
 
 Check Scala style, run tests and generate coverage report
 
@@ -30,7 +30,7 @@ sbt ++2.12.8 scalastyle test coverage coverageReport
 ```
 
 
-# Publish Locally
+## Publish Locally
 
 Make sure `export GPG_TTY=$(tty)` is appended to `~/.bashrc` or has been loaded to current shell.
 
@@ -38,6 +38,29 @@ Make sure `export GPG_TTY=$(tty)` is appended to `~/.bashrc` or has been loaded 
 source ~/.bashrc
 sbt ++2.11.8 publishLocalSigned
 sbt ++2.12.8 publishLocalSigned
+```
+
+
+## Examples
+
+```scala
+
+import io.alphash.faker._
+
+val number = Phone().phoneNumber()
+println(s"$number") // output some phone number like, "+1 (202) 737-6022"
+
+val name = Person().name
+println(s"$name")  // e.g., "Blanca Spencer"
+
+val price = Price().amountWithCurrency
+println(s"$price") // e.g., "CAD 42545.1"
+
+val ip = Internet().ipv4
+println(s"$ip")    // e.g., "89.51.74.211"
+
+...
+
 ```
 
 
