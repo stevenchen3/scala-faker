@@ -9,6 +9,10 @@ Scala Fake Data Generator. This repository includes Scala implementation for thi
 
 # Get Started
 
+**Supported Scala versions**
+* Scala 2.11
+* Scala 2.12
+
 To use the latest development version, append the following to your `build.sbt`
 
 ```scala
