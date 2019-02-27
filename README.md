@@ -32,7 +32,7 @@ sbt ++2.12.8 scalastyle test coverage coverageReport
 
 ## Publish Locally
 
-Make sure `export GPG_TTY=$(tty)` is appended to `~/.bashrc` or has been loaded to current shell.
+Make sure `export GPG_TTY=$(tty)` (this fixes `gpg: signing failed: Inappropriate ioctl for device` error, checkout [here](https://github.com/keybase/keybase-issues/issues/2798) to see why) is appended to `~/.bashrc` or has been loaded to current shell.
 
 ```bash
 source ~/.bashrc
