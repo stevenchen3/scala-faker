@@ -5,6 +5,8 @@ Scala Fake Data Generator. This repository includes Scala implementation for thi
 [![Build Status](https://travis-ci.org/stevenchen3/scala-faker.svg?branch=master)](https://travis-ci.org/stevenchen3/scala-faker)
 [![Coverage Statue](https://img.shields.io/codecov/c/github/stevenchen3/scala-faker/master.svg)](https://codecov.io/gh/stevenchen3/scala-faker)
 [![License](https://img.shields.io/github/license/stevenchen3/scala-faker.svg)](https://github.com/stevenchen3/faker/blob/master/LICENSE)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.stevenchen3/scala-faker_2.12.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.stevenchen3/scala-faker_2.12)
+
 
 
 # Get Started
@@ -13,11 +15,10 @@ Scala Fake Data Generator. This repository includes Scala implementation for thi
 * Scala 2.11
 * Scala 2.12
 
-To use the latest development version, append the following to your `build.sbt`
+To use the latest stable version, append the following to your `build.sbt`
 
 ```scala
-resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "0.1.0-SNAPSHOT"
+libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "0.1.0-rc1"
 ```
 
 
