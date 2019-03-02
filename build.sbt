@@ -19,9 +19,17 @@ lazy val commonSettings = Seq(
   )
 )
 
+val licenseName = "BSD-3-Clause"
+val licenseUrl  = "https://opensource.org/licenses/BSD-3-Clause"
+lazy val headerSettings = Seq(
+  organizationName := fullName,
+  startYear := Some(2019),
+  licenses  += (licenseName, new URL(licenseUrl))
+)
+
 lazy val publishSettings = Seq(
   organization         := s"com.github.${githubId}",
-  organizationName     := "Steven Chen's Open Source Work",
+  organizationName     := fullName,
   organizationHomepage := Some(url(githubUrl)),
   scmInfo := Some(
     ScmInfo(
@@ -38,7 +46,7 @@ lazy val publishSettings = Seq(
     )
   ),
   description := "Scala fake data generator library",
-  licenses    := List("BSD 3-Clause" -> new URL("https://opensource.org/licenses/BSD-3-Clause")),
+  licenses    := List(licenseName -> new URL(licenseUrl)),
   homepage    := Some(url(s"${githubBaseUrl}/${githubId}/${projectName}")),
   // Remove all additional repository other than Maven Central from POM
   pomIncludeRepository := { _ ⇒ false },
@@ -55,8 +63,9 @@ lazy val publishSettings = Seq(
 )
 
 lazy val root = Project(id = projectName, base = file("."))
+  .enablePlugins(AutomateHeaderPlugin)
   .settings(crossScalaVersions := Seq("2.11.8", "2.12.8"))
-  .settings(commonSettings ++ publishSettings: _*)
+  .settings(commonSettings ++ headerSettings ++ publishSettings)
   .settings(fork in run  := true)
   .settings(fork in Test := true)
   .settings(coverageEnabled := true)
