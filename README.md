@@ -15,10 +15,12 @@ Scala Fake Data Generator. This repository includes Scala implementation for thi
 * Scala 2.11
 * Scala 2.12
 
-To use the latest stable version, append the following to your `build.sbt`
+To use the latest stable version, append the following to your `build.sbt` and replace
+`LATEST_VERSION` with the latest version published, which should be
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.stevenchen3/scala-faker_2.12.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.stevenchen3/scala-faker_2.12)
 
 ```scala
-libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "0.1.0-rc1"
+libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "LATEST_VERSION"
 ```
 
 
