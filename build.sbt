@@ -1,18 +1,18 @@
 import Dependencies._
 import xerial.sbt.Sonatype._
 
-val projectName  = "scala-faker"
-val githubId     = "stevenchen3"
-val githubUrl    = "https://github.org/stevenchen3"
-val emailAddress = "steven.chen.xyz@gmail.com"
-val fullName     = "Steven Chen"
+val projectName   = "scala-faker"
+val githubId      = "stevenchen3"
+val githubBaseUrl = "https://github.com"
+val githubUrl     = s"${githubBaseUrl}/stevenchen3"
+val emailAddress  = "steven.chen.xyz@gmail.com"
+val fullName      = "Steven Chen"
 
 lazy val commonSettings = Seq(
   name := projectName,
   scalacOptions in Compile ++= Seq("-encoding", "UTF-8", "-target:jvm-1.8"),
   javacOptions  in Compile ++= Seq("-source", "1.8", "-target", "1.8"),
   javaOptions   in Test    ++= Seq("-Xms256m", "-Xmx2g", "-Dconfig.resource=test.conf"),
-  javaOptions   in run     ++= Seq("-Xms256m", "-Xmx2g", "-XX:+UseParallelGC", "-server"),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
     Resolver.typesafeRepo("releases")
@@ -20,12 +20,12 @@ lazy val commonSettings = Seq(
 )
 
 lazy val publishSettings = Seq(
-  organization         := "com.github.stevenchen3",
+  organization         := s"com.github.${githubId}",
   organizationName     := "Steven Chen's Open Source Work",
   organizationHomepage := Some(url(githubUrl)),
   scmInfo := Some(
     ScmInfo(
-      url(s"https://github.com/${githubId}/${projectName}"),
+      url(s"${githubBaseUrl}/${githubId}/${projectName}"),
       s"scm:git@github.com:${githubId}/${projectName}.git"
     )
   ),
@@ -39,7 +39,7 @@ lazy val publishSettings = Seq(
   ),
   description := "Scala fake data generator library",
   licenses    := List("BSD 3-Clause" -> new URL("https://opensource.org/licenses/BSD-3-Clause")),
-  homepage    := Some(url(s"https://github.com/${githubId}/${projectName}")),
+  homepage    := Some(url(s"${githubBaseUrl}/${githubId}/${projectName}")),
   // Remove all additional repository other than Maven Central from POM
   pomIncludeRepository := { _ ⇒ false },
   publishTo := {
