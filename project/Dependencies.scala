@@ -19,7 +19,7 @@ object Dependencies {
 
   // Scalatest library dependencies
   val scalatestDeps = Seq(
-    "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+    "org.scalatest" %% "scalatest" % "3.0.6" % "test"
   )
 
   val typesafeConfigDeps = Seq(
