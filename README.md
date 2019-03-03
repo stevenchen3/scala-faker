@@ -15,27 +15,30 @@ Scala Fake Data Generator. This repository includes Scala implementation for thi
 * Scala 2.11
 * Scala 2.12
 
-To use the latest stable version, append the following to your `build.sbt` and replace
-`LATEST_VERSION` with the latest version published, which should be
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.stevenchen3/scala-faker_2.12.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.stevenchen3/scala-faker_2.12)
+This library is available at Maven Central Repository. To use the latest stable version, append the
+following to your `build.sbt` and replace `LATEST_VERSION` with the latest version published, which
+should be [![Maven Central](https://img.shields.io/maven-central/v/com.github.stevenchen3/scala-faker_2.12.svg)](
+https://maven-badges.herokuapp.com/maven-central/com.github.stevenchen3/scala-faker_2.12)
 
 ```scala
 libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "LATEST_VERSION"
 ```
 
 
-## Building Current
+## Building Current Development Branch
 
-Check Scala style, run tests and generate coverage report
+Check scalastyle, run tests and generate coverage report across all supported Scala versions:
 
 ```bash
-sbt ++2.12.8 scalastyle test coverage coverageReport
+sbt +scalastyle +coverage +test +coverageReport
 ```
 
 
 ## Publish Locally
 
-Make sure `export GPG_TTY=$(tty)` (this fixes `gpg: signing failed: Inappropriate ioctl for device` error, checkout [here](https://github.com/keybase/keybase-issues/issues/2798) to see why) is appended to `~/.bashrc` or has been loaded to current shell.
+Make sure `export GPG_TTY=$(tty)` (this fixes `gpg: signing failed: Inappropriate ioctl for device`
+error, checkout [here](https://github.com/keybase/keybase-issues/issues/2798) to see why) is
+appended to `~/.bashrc` or has been loaded to current shell.
 
 ```bash
 source ~/.bashrc
