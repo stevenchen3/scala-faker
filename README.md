@@ -25,7 +25,7 @@ libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "LATEST_VERSI
 ```
 
 
-## Building Current Development Branch
+## Build Current `master`
 
 Check scalastyle, run tests and generate coverage report across all supported Scala versions:
 
