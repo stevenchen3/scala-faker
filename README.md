@@ -30,7 +30,7 @@ libraryDependencies += "com.github.stevenchen3" %% "scala-faker" % "LATEST_VERSI
 Check scalastyle, run tests and generate coverage report across all supported Scala versions:
 
 ```bash
-sbt +scalastyle +coverage +test +coverageReport
+sbt +scalastyle +scalafixcheck +coverage +test +coverageReport
 ```
 
 

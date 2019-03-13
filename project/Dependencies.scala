@@ -1,3 +1,4 @@
+import scalafix.sbt.ScalafixPlugin.autoImport._
 import sbt._
 
 object Dependencies {

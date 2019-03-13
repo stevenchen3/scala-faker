@@ -1,6 +1,8 @@
 import Dependencies._
 import xerial.sbt.Sonatype._
 
+addCommandAlias("scalafixcheck", "; compile:scalafix --check ; test:scalafix --check")
+
 val projectName   = "scala-faker"
 val githubId      = "stevenchen3"
 val githubBaseUrl = "https://github.com"
@@ -10,13 +12,20 @@ val fullName      = "Steven Chen"
 
 lazy val commonSettings = Seq(
   name := projectName,
-  scalacOptions in Compile ++= Seq("-encoding", "UTF-8", "-target:jvm-1.8"),
+  scalacOptions in Compile ++= Seq(
+    "-encoding",
+    "UTF-8",
+    "-target:jvm-1.8",
+    "-Yrangepos",
+    "-Ywarn-unused-import"
+  ),
   javacOptions  in Compile ++= Seq("-source", "1.8", "-target", "1.8"),
   javaOptions   in Test    ++= Seq("-Xms256m", "-Xmx2g", "-Dconfig.resource=test.conf"),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
     Resolver.typesafeRepo("releases")
-  )
+  ),
+  addCompilerPlugin(scalafixSemanticdb)
 )
 
 val licenseName = "BSD-3-Clause"
@@ -64,7 +73,7 @@ lazy val publishSettings = Seq(
 
 lazy val root = Project(id = projectName, base = file("."))
   .enablePlugins(AutomateHeaderPlugin)
-  .settings(crossScalaVersions := Seq("2.11.8", "2.12.8"))
+  .settings(crossScalaVersions := Seq("2.11.12", "2.12.8"))
   .settings(commonSettings ++ headerSettings ++ publishSettings)
   .settings(fork in run  := true)
   .settings(fork in Test := true)
