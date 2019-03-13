@@ -30,10 +30,9 @@
 
 package io.alphash.faker
 
-import com.typesafe.config.ConfigFactory
 
 import scala.io.Source
-import scala.util.{Failure, Random, Success, Try}
+import scala.util.{Random, Try}
 
 sealed case class Titles(male: Seq[String], female: Seq[String])
 sealed case class FirstNames(male: Seq[String], female: Seq[String])

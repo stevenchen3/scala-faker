@@ -34,7 +34,6 @@ import com.typesafe.config.{Config, ConfigFactory}
 
 import io.circe._
 import io.circe.parser._
-import io.circe.syntax._
 
 import java.io.InputStream
 
