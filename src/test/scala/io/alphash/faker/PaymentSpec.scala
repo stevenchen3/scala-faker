@@ -55,6 +55,7 @@ class PaymentSpec extends FlatSpec with Matchers {
     }
   }
 
+  // scalastyle:off
   it should "be in a valid credit card number format" in {
     val number = Payment().creditCardNumber()
     number.length match {
@@ -63,6 +64,7 @@ class PaymentSpec extends FlatSpec with Matchers {
       case _ ⇒ number.length should be(16)
     }
   }
+  // scalastyle:on
 
   it should "have predefined length" in {
     cards.foreach { c ⇒
@@ -77,7 +79,7 @@ class PaymentSpec extends FlatSpec with Matchers {
   }
 
   it should "throw Exception if invalid credit card type is given" in {
-    a [Exception] should be thrownBy {
+    a[Exception] should be thrownBy {
       Payment().creditCardNumber(Some("foobar"))
     }
   }

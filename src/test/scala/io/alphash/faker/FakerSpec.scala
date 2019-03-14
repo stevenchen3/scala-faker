@@ -54,7 +54,7 @@ class FakerSpec extends FlatSpec with Matchers {
   }
 
   it should "throw Exception if either resource 'name' or 'file' is invalid" in {
-    a [Exception] should be thrownBy {
+    a[Exception] should be thrownBy {
       FakerFoo().getResource("foo", "bar")
     }
   }
@@ -64,7 +64,9 @@ class FakerSpec extends FlatSpec with Matchers {
   }
 
   it should "return some element" in {
+    // scalastyle:off
     FakerFoo().getRandomElement[Int](List(1, 2, 3, 4, 5)) should not be(None)
+    // scalastyle:on
   }
 
   it should "return None if the given Seq is empty" in {
@@ -78,7 +80,7 @@ class FakerSpec extends FlatSpec with Matchers {
   }
 
   it should "throw Exception if invalid string is given" in {
-    a [Exception] should be thrownBy {
+    a[Exception] should be thrownBy {
       FakerFoo().objectFrom[Foobar]("foobar")
     }
   }

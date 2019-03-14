@@ -60,9 +60,11 @@ class InternetSpec extends FlatSpec with Matchers {
     Internet().username.matches("[a-zA-Z0-9]{7}") should be (true)
   }
 
+  // scalastyle:off
   "A password" should "have 16 characters" in {
     Internet().password.size should be (16)
   }
+  // scalastyle:on
 
   "An IPv4 address" should "have the format of '{0-255}.{0-255}.{0-255}.{0-255}'" in {
     val ip = Internet().ipv4

@@ -80,16 +80,19 @@ class PhoneSpec extends FlatSpec with Matchers {
   it should "be either Singapore or US phone number" in {
     val prefixes = List("+65 ", "+1 (")
     (1 to 100).foreach { _ ⇒
+      // scalastyle:off
       prefixes should contain(Phone().phoneNumber().take(4))
+      // scalastyle:on
     }
   }
 
   it should "throw Exception if unsupported country code given" in {
-    a [Exception] should be thrownBy {
+    a[Exception] should be thrownBy {
       Phone().phoneNumber(Some("00"))
     }
   }
 
+  // scalastyle:off
   "A toll free phone number" should "have the type of '(888) 123-4567'" in {
     val prefixes = List("(888)", "(800)", "(777)")
     (1 to 100).foreach { _ ⇒
@@ -101,13 +104,16 @@ class PhoneSpec extends FlatSpec with Matchers {
       digits(1).split("-")(0).size should be(3)
     }
   }
+  // scalastyle:on
 
+  // scalastyle:off
   "A E164 phone number" should "have the type of '+71234567891'" in {
     val number = Phone().e164PhoneNumber(Some("65"))
     number.size should be(11)
     number.startsWith("+") should be(true)
     List("+653", "+656") should contain(number.take(4))
   }
+  // scalastyle:on
 
   it should "have the predefined type '+653', '+656', '+1201', or '+1202'" in {
     val prefixes = List("+653", "+656", "+1201", "+1202")
@@ -119,7 +125,7 @@ class PhoneSpec extends FlatSpec with Matchers {
   }
 
   it should "throw Exception if unsupported country code given" in {
-    a [Exception] should be thrownBy {
+    a[Exception] should be thrownBy {
       Phone().e164PhoneNumber(Some("00"))
     }
   }

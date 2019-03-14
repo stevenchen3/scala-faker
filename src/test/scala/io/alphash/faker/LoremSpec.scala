@@ -41,13 +41,16 @@ class LoremSpec extends FlatSpec with Matchers {
     val sentence = Lorem().sentence
     sentence.endsWith(".") should be(true)
     val words = sentence.take(sentence.length - 1).split(" ")
+    // scalastyle:off
     words.size should be(6)
+    // scalastyle:on
     words(0)(0).isUpper should be(true)
     words.foreach { w ⇒
       Lorem.wordList should contain(w.toLowerCase)
     }
   }
 
+  // scalastyle:off
   "A paragraph" should "contain 10 sentences" in {
     val p = Lorem().paragraph
     p.endsWith(".") should be(true)
@@ -64,4 +67,5 @@ class LoremSpec extends FlatSpec with Matchers {
       }
     }
   }
+  // scalastyle:on
 }

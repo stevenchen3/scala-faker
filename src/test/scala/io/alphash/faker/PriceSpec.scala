@@ -40,7 +40,7 @@ class PriceSpec extends FlatSpec with Matchers {
   }
 
   it should "throw Exception if unsupported currency is given" in {
-    a [Exception] should be thrownBy {
+    a[Exception] should be thrownBy {
       Price(Some("XYZ")).currency
     }
   }
@@ -68,7 +68,7 @@ class PriceSpec extends FlatSpec with Matchers {
   }
 
   "A given negative amount" should "throw an Exception" in {
-    a [Exception] should be thrownBy {
+    a[Exception] should be thrownBy {
       Price(amountOpt = Some(-12.34)).amount
     }
   }
