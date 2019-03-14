@@ -20,7 +20,7 @@ scala:
 jdk:
   - openjdk8
 
-script: sbt ++$TRAVIS_SCALA_VERSION clean scalastyle scalafixcheck coverage test coverageReport
+script: sbt ++$TRAVIS_SCALA_VERSION clean scalastyle test:scalastyle scalafixcheck coverage test coverageReport
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
