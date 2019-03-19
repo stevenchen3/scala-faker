@@ -20,7 +20,7 @@ lazy val commonSettings = Seq(
     "-Ywarn-unused-import"
   ),
   javacOptions  in Compile ++= Seq("-source", "1.8", "-target", "1.8"),
-  javaOptions   in Test    ++= Seq("-Xms256m", "-Xmx2g", "-Dconfig.resource=test.conf"),
+  javaOptions   in Test    ++= Seq("-Xms256m", "-Xmx2g"),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
     Resolver.typesafeRepo("releases")
