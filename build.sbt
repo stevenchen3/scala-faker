@@ -77,7 +77,7 @@ lazy val root = Project(id = projectName, base = file("."))
   .settings(commonSettings ++ headerSettings ++ publishSettings)
   .settings(fork in run  := true)
   .settings(fork in Test := true)
-  .settings(coverageEnabled := true)
+  .settings(coverageEnabled := true) // set to 'false' when publish
   .settings(libraryDependencies ++= circeDeps)
   .settings(libraryDependencies ++= jodaTimeDeps)
   .settings(libraryDependencies ++= jodaConvertDeps)
